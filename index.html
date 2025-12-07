@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>首页 - Mdeems</title>
+    <style>
+        .body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .top-menu {
+            border: none;
+            box-shadow: none;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            padding: 8px 20px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 18px;
+            border-radius: 13px;
+            margin-left: 10px;
+            cursor: pointer;
+            /* text-decoration: underline; */
+            text-decoration-color: #0099ff;
+        }
+        .top-menu:hover{
+            font-weight: bold;
+        }
+        .windows {
+            display: flex;
+            /* justify-content: center;*/
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2);
+        }
+        .graybg {
+            position: fixed;
+            top:0;
+            bottom: 0;
+            left:0;
+            right: 0;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(1px);
+            z-index: 2;
+        }
+        .button { /* 按钮  */
+            border: none;
+            box-shadow: none;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            padding: 8px 20px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 18px;
+            border-radius: 13px;
+            cursor: pointer;
+        }
+        @keyframes dropdown-animation {
+            from { opacity: 1; transform: translateY(0.9px);}
+            to { opacity: 0; transform: translateY(-30px);}
+        }
+        .dropdown {
+            position: relative;
+            display: block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            animation: dropdown-animation 0.4s forwards;
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1.5px);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            border-radius: 20px;
+            background: #ffffff93;
+            box-shadow: none;
+            opacity: 0.95;
+            animation: dropdown-animation 0.4s reverse forwards;
+        }
+        .form-control {
+        position: relative;
+        margin: 20px 0 40px;
+        width: 255px;
+        }
+
+        .form-control input {
+        background-color: transparent;
+        border: 2px #00000090 solid;
+        display: block;
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 50px;
+        font-size: 18px;
+        border-radius: 15px 15px 15px 15px;
+        
+        height: 40px;
+        color: #000000;
+        }
+
+        .form-control input:focus,
+        .form-control input:valid {
+        outline: 0;
+        border-bottom-color: #00000090;
+        }
+
+        .form-control label {
+        position: absolute;
+        top: 9px;
+        left: 20px;
+        pointer-events: none;
+        }
+
+        .form-control label span {
+        display: inline-block;
+        font-size: 18px;
+        width: 37px;
+        text-align: center;
+        color: #00000090;
+        background-color: #ffffff;
+        border-radius: 10px;
+        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-control input:focus+label span,
+        .form-control input:valid+label span {
+        color: #00000090;
+        transform: translateY(-18px);
+        font-size: 14px;
+        }
+        .loading {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #000;
+            border-top-color: rgba(0, 0, 0, 0.2);
+            border-right-color: rgba(0, 0, 0, 0.2);
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+            border-radius: 100%;
+            animation: loading-circle infinite 1.7s linear;
+        }
+        @keyframes loading-circle {
+            0% {
+                transform: rotate(0);
+            }
+            20% {
+                transform: rotate(50deg);
+            }
+            40% {
+                transform: rotate(100deg);
+            }
+            60% {
+                transform: rotate(200deg);
+            }
+            80% {
+                transform: rotate(300deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .input-shake {
+            animation: input-shake 600ms ease-in-out;
+        }
+        @keyframes input-shake {
+            10% { transform: translate3d(-17px, 0, 0); }
+            20% { transform: translate3d(+13px, 0, 0); }
+            30% { transform: translate3d(-9px, 0, 0); }
+            40% { transform: translate3d(+7px, 0, 0); }
+            50% { transform: translate3d(-5px, 0, 0); }
+            60% { transform: translate3d(-4px, 0, 0); }
+            70% { transform: translate3d(+3px, 0, 0); }
+            80% { transform: translate3d(-2px, 0, 0); }
+            90% { transform: translate3d(+1px, 0, 0); }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="graybg" style="visibility: hidden;"></div>
+    <div class="windows" style="display: flex; height: 50px; width: 97%; top: 10px; align-items: center; padding-left: 5px; padding-right: 10px; position: fixed;">
+        <img src="https://youke1.picui.cn/s1/2025/11/24/6924508021b8f.png" style="width: 30px; height: 30px; border-radius: 10px; display: none; cursor: pointer; user-select: none;" id="img_top_menu_short" onclick="show_all_top_menu()">
+        <button class="top-menu" style="font-size: 20px; font-weight: bold; text-decoration: underline;" onclick="window.location.href=('https://mdeems.dpdns.org')">Mdeems</button>
+        <div id="div_top_menu_long" class="windows" style="width: 100%; box-shadow: none;">
+            <div class="dropdown" >
+                <button class="top-menu" style="font-size: 20px; cursor: default;">小项目</button>
+                <div class="dropdown-content" style="min-width: 160px; padding: 50px 40px; top: 45px">
+                    <button class="button" onclick="window.location.href=('https://projects.mdkins.dpdns.org')" style="color:#0099ff; font-size: 17px; background-color: #00000000;">查看所有小项目</button>
+                    <p>我太懒了, 所以这里就不展示最近创建的小项目了。</p>
+                </div>
+            </div>
+            <div class="dropdown" >
+                <button class="top-menu" style="font-size: 20px; cursor: default;" >信息</button>
+                <div class="dropdown-content"  style="min-width: 140px; padding: 50px 40px; top: 45px">
+                    <button class="button" style="color:#0099ff; background-color: #00000000;" onclick="window.open('https://notices.mdkins.dpdns.org')";>公告</button>
+                    <button class="button" style="color:#0099ff; background-color: #00000000;" onclick="window.open('https://communication.mdkins.dpdns.org')";>社区</button>
+                    <button class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</button>
+                    <button class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</button>
+                    <button class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</button>
+                    <button class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</button>
+                </div>
+            </div>
+            <div class="dropdown" >
+                <button class="top-menu" style="font-size: 20px; cursor: default;">关于</button>
+                <div class="dropdown-content" style="min-width: 125px; padding: 40px 40px; top: 45px">
+                    
+                    <button class="button" onclick="window.open('https://about.mdkins.dpdns.org')" style="color: #0099ff; background-color: #00000000; font-size: 17px;">关于网站</button><br>
+                    <button class="button" onclick="window.open('https://afdian.com/a/Mdeems')" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">爱发电主页</button><br>
+                    <button class="button" onclick="window.open('https://m.weibo.cn/u/9189604064')" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">微博主页</button><br>
+                    <button class="button" onclick="window.open('https://about.mdkins.dpdns.org')" style="color: #0099ff; background-color: #00000000; font-size: 17px;">关于作者</button><br>
+                </div>
+            </div>
+            <div style="width: calc(100% - 380px);"></div>
+            <div class="dropdown" style="right: 20px;">
+                <button class="top-menu" style="font-size: 20px; cursor: default;" disabled="enabled">账户</button>
+                <div class="dropdown-content" style="min-width: 80px; padding: 20px 40px; left: -50px; top: 45px">
+                    <div id="div_account_not_logined">
+                        <button class="button" onclick="window.location.href=('https://login.mdkins.dpdns.org')" style="background-color:#0099ff; color: #ffffff; font-size: 17px;">登录</button><br>
+                        <button class="button" onclick="window.location.href=('https://signup.mdkins.dpdns.org')" style="color: #0099ff; font-size: 17px; background-color: #00000000;">注册</button>
+                    </div>
+                    <div id="div_account_logined" style="display: none;">
+                        <img src="https://youke1.picui.cn/s1/2025/11/24/6923ec29e7e96.png" style="margin-left: -20px; margin-top: 0px; border-radius: 10px; width: 30px; height: 30px;">
+                        <p style="margin-left: 18px; margin-top: -32px;" id="p_account_logined_username""></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <br>
+    <br><br>
+    我准备把菜单栏的外观大改
+    <p>不好意思，是<a href="https://c.wss.cc/f/ilyih2hn7v7">这个(https://c.wss.cc/f/ilyih2hn7v7)</a></p>
+    <h4>2025.11.28</h4>
+    <img src="https://youke1.picui.cn/s1/2025/11/28/6929ac0ce1aba.png" style="border-radius: 15px; width: 90%; height: auto;">
+    <div class="windows" style="padding-left: 20px; padding-right: 20px;">
+        <p>我不知道这里应该放些什么, 那就先让这里空着。有什么建议可以告诉我。我认为这里可以放最近公告。你们觉得怎么样呢？</p>
+    </div>
+    <br>
+    <div class="windows" style="padding-left: 20px; padding-right: 20px;">
+        <p>注册、登录、小项目列表、公告、社区都没做好。</p>
+    </div>
+    <br>
+    <div class="windows" style="padding-left: 20px; padding-right: 20px;">
+        <p>梁 - -, 你看一下我发你的信息。</p>
+    </div>
+    <br><br><br>
+    有问题, 请加入我们的群:
+    <p>(针对未在<a href="https://afdian.com/a/Mdeems">爱发电</a>进行赞助的用户)</p>
+    钉钉群1: 1648 0000 3752<br>
+    钉钉群2: 1628 8500 4556<br>
+
+    <br><p id="test"></p>
+    <script>
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault()
+        });
+        document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 123) {
+            event.preventDefault();
+        }
+        });
+        document.addEventListener('keydown', function (event) {
+        if ((event.ctrlKey && event.shiftKey && event.keyCode === 73) || (event.ctrlKey && event.shiftKey && event.keyCode === 74) || (event.ctrlKey && event.keyCode === 85)) {
+            event.preventDefault();
+        }
+        });
+        (function anonymous() {
+            function ban() {
+                setInterval(() => { debugger; }, 500);
+            }
+            try {
+                ban();
+            } catch (err) { }
+        })();
+        setInterval(function () {
+            var startTime = performance.now();
+            debugger;
+            var endTime = performance.now();
+            if (endTime - startTime > 100) {
+                window.location.href = 'about:blank';
+            }
+        }, 100);
+        if (window.innerWidth < 530) {
+            document.getElementById("div_top_menu_long").style.display = "none";
+            document.getElementById("img_top_menu_short").style.display = "block";
+        }
+        window.addEventListener('resize', function () {
+            if (window.innerWidth < 530) {
+                document.getElementById("div_top_menu_long").style.display = "none";
+                document.getElementById("img_top_menu_short").style.display = "block";
+            }
+        document.getElementById("test").innerHTML = window.innerWidth;
+            if (window.innerWidth >= 530) {
+                hide_all_top_menu()
+                document.getElementById("div_top_menu_long").style.display = "flex";
+                document.getElementById("img_top_menu_short").style.display = "none";
+            }
+        });
+        function show_all_top_menu()
+        {
+            if (document.getElementById("div_top_menu_long").style.display == 'flex')
+            {
+                hide_all_top_menu();
+            }
+            else
+            {
+            document.getElementById("div_top_menu_long").style.display = 'flex';
+            document.getElementById("div_top_menu_long").style.position = "fixed";
+            document.getElementById("div_top_menu_long").style.top = "70px";
+            document.getElementById("div_top_menu_long").style.boxShadow = "0px 0px 15px 3px rgba(0, 0, 0, 0.2)";
+            document.getElementById("div_top_menu_long").style.flexDirection = "row";
+            }
+        }
+        function hide_all_top_menu()
+        {
+            document.getElementById("div_top_menu_long").style.display = 'none';
+            document.getElementById("div_top_menu_long").style.position = "relative";
+            document.getElementById("div_top_menu_long").style.top = "0px";
+            document.getElementById("div_top_menu_long").style.boxShadow = "none";
+        }
+    </script>
+</body>
+
+
