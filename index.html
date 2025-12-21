@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="">
     <title>Mdunce</title>
     <style>
         .body {
@@ -74,7 +75,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            animation: dropdown-animation 0.4s forwards;
+            animation: dropdown-animation .2s forwards;
             box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(1.3px);
         }
@@ -84,7 +85,7 @@
             background: #ffffff93;
             box-shadow: none;
             opacity: 0.95;
-            animation: dropdown-animation 0.4s reverse forwards;
+            animation: dropdown-animation .3s reverse forwards;
         }
         .form-control {
         position: relative;
@@ -186,45 +187,42 @@
 <body class="body">
     <div class="graybg" style="visibility: hidden;"></div>
     <div class="windows" style="height: 50px; width: 97%; top: 10px; align-items: center; padding-left: 5px; padding-right: 5px; position: fixed; flex-direction: row;">
-        <img src="https://youke1.picui.cn/s1/2025/11/24/6924508021b8f.png" style="width: 30px; height: 30px; border-radius: 10px; display: none; cursor: pointer; user-select: none;" id="img_top_menu_short" onclick="show_all_top_menu()" draggable="false">
-        <a target="_blank" class="top-menu" style="font-size: 20px; font-weight: bold; text-decoration: underline;" href="https://mdeems.dpdns.org">Mdeems</a><br>
-        <div id="div_top_menu_long" class="windows" style="width: 100%; box-shadow: none;">
-            <div class="dropdown" >
+        <img src="list.png" style="width: 30px; height: 30px; border-radius: 10px; display: none; cursor: pointer; user-select: none;" id="img_top_menu_short" onclick="show_all_top_menu()" draggable="false">
+        <a align="center" class="top-menu" style="font-size: 20px; font-weight: bold; text-decoration: underline;" href="https://cymdil.cn/">cymdil</a><br>
+        <div align="center" id="div_top_menu_long" class="windows" style="width: 100%; box-shadow: none;">
+            <div align="left" class="dropdown" 
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;">小项目</a><br>
                 <div class="dropdown-content" style="min-width: 160px; padding: 50px 40px; top: 37px">
                     <a target="_self" class="button" href="/projects/" style="color:#0099ff; font-size: 17px; background-color: #00000000;">查看所有小项目</a><br>
                     <p>我太懒了, 所以这里就不展示最近创建的小项目了。</p>
                 </div>
             </div>
-            <div class="dropdown" >
+            <div align="left" class="dropdown" >
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;" >信息</a><br>
                 <div class="dropdown-content"  style="min-width: 140px; padding: 50px 40px; top: 37px">
-                    <a target="_blank" class="button" style="color:#0099ff; background-color: #00000000;" href="https://notices.mdkins.dpdns.org";>公告</a><br>
-                    <a target="_blank" class="button" style="color:#0099ff; background-color: #00000000;" href="https://communication.mdkins.dpdns.org";>社区</a><br>
+                    <a target="_blank" class="button" style="color:#0099ff; background-color: #00000000;" href="/notice/";>公告</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                 </div>
             </div>
-            <div class="dropdown" >
+            <div align="left" class="dropdown" >
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;">关于</a><br>
-                <div class="dropdown-content" style="min-width: 125px; padding: 40px 40px; top: 37px">
+                <div class="dropdown-content" style="min-width: 125px; width: 150px; padding: 40px 40px; top: 37px">
                     
-                    <a target="_blank" class="button" href="/about/" style="color: #0099ff; background-color: #00000000; font-size: 17px;">关于网站</a><br><br>
-                    <a target="_blank" class="button" href="https://afdian.com/a/Mdunce" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">爱发电主页</a><br><br>
+                    <a target="_blank" class="button" href="/about/" style="color: #0099ff50; background-color: #00000000; font-size: 17px; cursor: not-allowed;" disabled="disabled">关于网站</a><br><br>
+                    <a target="_blank" class="button" href="https://afdian.com/a/cymdil" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">爱发电主页</a><br><br>
                     <a target="_blank" class="button" href="https://weibo.cn/u/9189604064" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">微博主页</a><br><br>
-                    <a target="_blank" class="button" href="https://space.bilibili.com/3690976702892175" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">哔哩哔哩主页</a><br><br>
-                    <a target="_blank" class="button" href="/about/" style="color: #0099ff; background-color: #00000000; font-size: 17px;">关于作者</a><br><br>
+                    <a target="_blank" class="button" href="/about/" style="color: #0099ff50; background-color: #00000000; font-size: 17px; cursor: not-allowed;" disabled="disabled">关于作者</a><br><br>
                 </div>
             </div>
-            <div style="width: calc(95% - 370px);"></div>
-            <div class="dropdown" style="right: 20px;">
+            <div align="right" class="dropdown" style="right: 20px;">
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;" disabled="enabled">账户</a><br>
                 <div class="dropdown-content" style="min-width: 80px; padding: 20px 40px; left: -50px; top: 37px">
                     <div id="div_account_not_logined">
-                        <a target="_blank" class="button" href="/" style="background-color:#0099ff; color: #ffffff; font-size: 17px;">登录</a><br><br>
-                        <a target="_blank" class="button" href="https://signup.mdkins.dpdns.org" style="color: #0099ff; font-size: 17px; background-color: #00000000;">注册</a><br>
+                        <a target="_blank" class="button" style="background-color:#0099ff50; color: #ffffff; font-size: 17px; cursor: not-allowed;">登录</a><br><br>
+                        <a target="_blank" class="button" style="color: #0099ff; font-size: 17px; background-color: #00000000;">注册</a><br>
                     </div>
                     <div id="div_account_logined" style="display: none;">
                         <img src="https://youke1.picui.cn/s1/2025/11/24/6923ec29e7e96.png" style="margin-left: -20px; margin-top: 0px; border-radius: 10px; width: 30px; height: 30px;">
@@ -249,40 +247,40 @@
     </div>
     <br><br><br>
     有问题, 请加入我们的群:
-    <p>(针对未在<a class="button" href="https://afdian.com/a/Mdunce" target="_blank" style="display: inline-block; color: #0099ff; cursor: pointer; background-color: #00000000; padding: 0px;"><u>爱发电</u></a>进行赞助的用户)</p>
+    <p>(针对未在<a class="button" href="https://afdian.com/a/cymdil" target="_blank" style="display: inline-block; color: #0099ff; cursor: pointer; background-color: #00000000; padding: 0px;"><u>爱发电</u></a>进行赞助的用户)</p>
     <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEMlhdpPPHh58LemRFHVR-8Qso3TN2XdQACQyUAAlAH4FVWoeu_qXWEATYE.png">
     已经在爱发电赞助过的可以加入专属群<br>
-    也可以在爱发电、哔哩哔哩、微博上私信我
+    也可以在爱发电、微博上私信我
     <script>
-        // document.addEventListener('contextmenu', function (event) {
-        //     event.preventDefault()
-        // });
-        // document.addEventListener('keydown', function (event) {
-        // if (event.keyCode === 123) {
-        //     event.preventDefault();
-        // }
-        // });
-        // document.addEventListener('keydown', function (event) {
-        // if ((event.ctrlKey && event.shiftKey && event.keyCode === 73) || (event.ctrlKey && event.shiftKey && event.keyCode === 74) || (event.ctrlKey && event.keyCode === 85)) {
-        //     event.preventDefault();
-        // }
-        // });
-        // (function anonymous() {
-        //     function ban() {
-        //         setInterval(() => { debugger; }, 500);
-        //     }
-        //     try {
-        //         ban();
-        //     } catch (err) { }
-        // })();
-        // setInterval(function () {
-        //     var startTime = performance.now();
-        //     debugger;
-        //     var endTime = performance.now();
-        //     if (endTime - startTime > 100) {
-        //         window.location.href = 'about:blank';
-        //     }
-        // }, 100);
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault()
+        });
+        document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 123) {
+            event.preventDefault();
+        }
+        });
+        document.addEventListener('keydown', function (event) {
+        if ((event.ctrlKey && event.shiftKey && event.keyCode === 73) || (event.ctrlKey && event.shiftKey && event.keyCode === 74) || (event.ctrlKey && event.keyCode === 85)) {
+            event.preventDefault();
+        }
+        });
+        (function anonymous() {
+            function ban() {
+                setInterval(() => { debugger; }, 500);
+            }
+            try {
+                ban();
+            } catch (err) { }
+        })();
+        setInterval(function () {
+            var startTime = performance.now();
+            debugger;
+            var endTime = performance.now();
+            if (endTime - startTime > 100) {
+                window.location.href = 'about:blank';
+            }
+        }, 100);
         if (window.innerWidth < 530) {
             document.getElementById("div_top_menu_long").style.display = "none";
             document.getElementById("img_top_menu_short").style.display = "block";
