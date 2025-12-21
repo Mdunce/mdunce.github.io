@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>首页 - MDKins</title>
+    
+</head>
+<body class="body">
+    暂无公告
+    <script>
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault()
+        });
+        document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 123) {
+            event.preventDefault();
+        }
+        });
+        document.addEventListener('keydown', function (event) {
+        if ((event.ctrlKey && event.shiftKey && event.keyCode === 73) || (event.ctrlKey && event.shiftKey && event.keyCode === 74) || (event.ctrlKey && event.keyCode === 85)) {
+            event.preventDefault();
+        }
+        });
+        (function anonymous() {
+            function ban() {
+                setInterval(() => { debugger; }, 500);
+            }
+            try {
+                ban();
+            } catch (err) { }
+        })();
+        setInterval(function () {
+            var startTime = performance.now();
+            debugger;
+            var endTime = performance.now();
+            if (endTime - startTime > 100) {
+                window.location.href = 'about:blank';
+            }
+        }, 100);
+    </script>
+</body>
