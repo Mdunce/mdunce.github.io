@@ -3,11 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>cymdil</title>
+    <link rel="icon" type="image/x-icon" href="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEORfdpURWDhHAlZZZvmz9WBDUAAZTXAhUAAlgbAAJlzJFWc--WaGnbWqo2BA.png">
     <meta name="description" content="cymdil">
     <meta name="keywords" content="cymdil,首页">
     <meta name="author" content="cymdil">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: calc(var(--radius) - 2px);
+      /* 使用更酷的渐变和发光效果 */
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 
+        inset 0 -8px 18px rgba(255, 255, 255, 0.15),
+        0 0 20px rgba(96, 165, 250, 0.5); /* 发光 */
+      flex-shrink: 0;
+    }
         .body {
             background-color: #f0f0f0;
             display: flex;
@@ -92,54 +110,54 @@
             animation: dropdown-animation .3s reverse forwards;
         }
         .form-control {
-        position: relative;
-        margin: 20px 0 40px;
-        width: 255px;
+            position: relative;
+            margin: 20px 0 40px;
+            width: 255px;
         }
 
         .form-control input {
-        background-color: transparent;
-        border: 2px #00000090 solid;
-        display: block;
-        width: 100%;
-        padding-left: 15px;
-        padding-right: 50px;
-        font-size: 18px;
-        border-radius: 15px 15px 15px 15px;
-        
-        height: 40px;
-        color: #000000;
+            background-color: transparent;
+            border: 2px #00000090 solid;
+            display: block;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 50px;
+            font-size: 18px;
+            border-radius: 15px 15px 15px 15px;
+            
+            height: 40px;
+            color: #000000;
         }
 
         .form-control input:focus,
         .form-control input:valid {
-        outline: 0;
-        border-bottom-color: #00000090;
+            outline: 0;
+            border-bottom-color: #00000090;
         }
 
         .form-control label {
-        position: absolute;
-        top: 9px;
-        left: 20px;
-        pointer-events: none;
+            position: absolute;
+            top: 9px;
+            left: 20px;
+            pointer-events: none;
         }
 
         .form-control label span {
-        display: inline-block;
-        font-size: 18px;
-        width: 37px;
-        text-align: center;
-        color: #00000090;
-        background-color: #ffffff;
-        border-radius: 10px;
-        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: inline-block;
+            font-size: 18px;
+            width: 37px;
+            text-align: center;
+            color: #00000090;
+            background-color: #ffffff;
+            border-radius: 10px;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .form-control input:focus+label span,
         .form-control input:valid+label span {
-        color: #00000090;
-        transform: translateY(-18px);
-        font-size: 14px;
+            color: #00000090;
+            transform: translateY(-18px);
+            font-size: 14px;
         }
         .loading {
             position: relative;
@@ -172,6 +190,7 @@
                 transform: rotate(360deg);
             }
         }
+        
         .input-shake {
             animation: input-shake 600ms ease-in-out;
         }
@@ -186,24 +205,46 @@
             80% { transform: translate3d(-2px, 0, 0); }
             90% { transform: translate3d(+1px, 0, 0); }
         }
+        .listdown {
+            position: relative;
+            display: block;
+        }
+        .listdown-content {
+            display: none;
+            position: absolute;
+            animation: listdown-animation .4s forwards;
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1.3px);
+        }
+        .listdown:hover .listdown-content {
+            display: block;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: none;
+            animation: listdown-animation reverse .4s forwards;
+        }
+        @keyframes listdown-animation {
+            from { opacity: 0; transform: translateY(-100px);}
+            to { opacity: 1; transform: translateY(0px);}
+        }
     </style>
 </head>
 <body class="body">
     <div class="graybg" style="visibility: hidden;"></div>
     <div class="windows" style="height: 50px; width: 97%; top: 10px; align-items: center; padding-left: 5px; padding-right: 5px; position: fixed; flex-direction: row;">
-        <img src="list.png" style="width: 30px; height: 30px; border-radius: 10px; display: none; cursor: pointer; user-select: none;" id="img_top_menu_short" onclick="show_all_top_menu()" draggable="false">
+        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEORfdpURWDhHAlZZZvmz9WBDUAAZTXAhUAAlgbAAJlzJFWc--WaGnbWqo2BA.png" style="width: 30px; height: 30px; border-radius: 10px; display: none; cursor: pointer; user-select: none;" id="img_top_menu_short" onclick="show_all_top_menu()" draggable="false">
         <a align="center" class="top-menu" style="font-size: 20px; font-weight: bold; text-decoration: underline;" href="https://cymdil.cn/">cymdil</a><br>
-        <div align="center" id="div_top_menu_long" class="windows" style="width: 100%; box-shadow: none;">
-            <div align="left" class="dropdown" 
+        <div align="center" id="menu" class="windows" style="width: 100%; box-shadow: none;">
+            <div align="left" class="listdown" 
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;">小项目</a><br>
-                <div class="dropdown-content" style="min-width: 160px; padding: 50px 40px; top: 37px">
+                <div class="listdown-content" style="min-width: 160px; padding: 50px 40px; top: 37px">
                     <a target="_self" class="button" href="/projects/" style="color:#0099ff; font-size: 17px; background-color: #00000000;">查看所有小项目</a><br>
                     <p>我太懒了, 所以这里就不展示最近创建的小项目了。</p>
                 </div>
             </div>
-            <div align="left" class="dropdown" >
+            <div align="left" class="listdown" >
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;" >信息</a><br>
-                <div class="dropdown-content"  style="min-width: 140px; padding: 50px 40px; top: 37px">
+                <div class="listdown-content"  style="min-width: 140px; padding: 50px 40px; top: 37px">
                     <a target="_blank" class="button" style="color:#0099ff; background-color: #00000000;" href="/notice/";>公告</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
@@ -211,19 +252,19 @@
                     <a target="_blank" class="button" style="color:#a0a0a0; background-color: #00000000;" disabled="disabled">敬请期待</a><br>
                 </div>
             </div>
-            <div align="left" class="dropdown" >
+            <div align="left" class="listdown" >
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;">关于</a><br>
-                <div class="dropdown-content" style="min-width: 125px; width: 150px; padding: 40px 40px; top: 37px">
+                <div class="listdown-content" style="min-width: 125px; width: 150px; padding: 40px 40px; top: 37px">
                     
                     <a target="_blank" class="button" href="/about/" style="color: #0099ff50; background-color: #00000000; font-size: 17px; cursor: not-allowed;" disabled="disabled">关于网站</a><br><br>
                     <a target="_blank" class="button" href="https://afdian.com/a/cymdil" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">爱发电主页</a><br><br>
-                    <a target="_blank" class="button" href="https://weibo.cn/u/9189604064" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">微博主页</a><br><br>
+                    <a target="_blank" class="button" href="https://weibo.com/u/9189604064" style="color: #0099ff; background-color: #00000000; font-size: 17px; cursor: pointer;">微博主页</a><br><br>
                     <a target="_blank" class="button" href="/about/" style="color: #0099ff50; background-color: #00000000; font-size: 17px; cursor: not-allowed;" disabled="disabled">关于作者</a><br><br>
                 </div>
             </div>
-            <div align="right" class="dropdown" style="right: 20px;">
+            <div align="right" class="listdown" style="right: 20px;">
                 <a target="_blank" class="top-menu" style="font-size: 20px; cursor: default;" disabled="enabled">账户</a><br>
-                <div class="dropdown-content" style="min-width: 80px; padding: 20px 40px; left: -50px; top: 37px">
+                <div class="listdown-content" style="min-width: 80px; padding: 20px 40px; left: -50px; top: 37px">
                     <div id="div_account_not_logined">
                         <a target="_blank" class="button" style="background-color:#0099ff50; color: #ffffff; font-size: 17px; cursor: not-allowed;">登录</a><br><br>
                         <a target="_blank" class="button" style="color: #0099ff; font-size: 17px; background-color: #00000000;">注册</a><br>
@@ -237,7 +278,8 @@
         </div>
     </div> 
     <br>
-    <br><br>
+    <br>
+    菜单没修改好<br>
     <div class="windows" style="padding-left: 20px; padding-right: 20px;">
         <p>我不知道这里应该放些什么, 那就先让这里空着。有什么建议可以告诉我。我认为这里可以放最近公告。你们觉得怎么样呢？</p>
     </div>
